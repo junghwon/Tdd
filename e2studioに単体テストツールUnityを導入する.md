@@ -35,7 +35,7 @@
 ```
     プロジェクトエクスプローラから、プロパティ>c/c++一般>パスおよびシンボルを選択し、構成をDebugに変更。
     #シンボルタブより、コンパイルスイッチ"USE_SIMULATOR"を追加する。
-    また、同様に構成を全ての構成に変更し、コンパイルスイッチ"UNITY_FIXTURE_NO_EXTRAS"を追加する。
+    また、同様に構成を全ての構成に変更し、コンパイルスイッチ"UNITY_FIXTURE_NO_EXTRAS"及び、"UNIT_TEST"を追加する。
 
 ### デバッグ準備
 #### ・HardwareDebug
@@ -91,16 +91,16 @@ TEST_TEAR_DOWN(Test0)
 }
 
 // テストケース
-TEST(Test0, testAdd)
+TEST(Test0, alwaysFail)
 {
     TEST_FAIL_MESSAGE("This test always fails.");
 }
 
 // テストグループで、実行するテストケースを列挙する
-// 上で作ったテストケースTest0, testAddをRUN_TEST_CASEに指定する
+// 上で作ったテストケースTest0, alwaysFailをRUN_TEST_CASEに指定する
 TEST_GROUP_RUNNER(Test0)
 {
-    RUN_TEST_CASE(Test0, testAdd);
+    RUN_TEST_CASE(Test0, alwaysFail);
 }
 ```
     更にAllTests.cを作成し、Test0グループを実行する。
@@ -123,14 +123,14 @@ void RunAllTests(void)
 
 void main(void)
 {
-#if 1
+#ifdef UNIT_TEST
     // コマンドラインオプション "-v" を指定。
     // -v   詳細(verbose)モード。各テストの実行前にテスト名を出力する。
     int argc = 2;
     const char *argv[] = {"program name", "-v"};
     extern void RunAllTests(void);
     UnityMain(argc, argv, RunAllTests);
-#endif
+#endif // UNIT_TEST
 
     while(1);
 }
