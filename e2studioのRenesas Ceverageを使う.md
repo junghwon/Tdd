@@ -11,9 +11,13 @@
 ### デバッグの開始
     デバッグを開始する。
 
+### Renesas Coverageのスタート
+    Renesas Coverageタブを選択し、右上の電源マーク(Turn coverage ON/OFF)を押して
+    Renesas Coverageをスタートさせる。
+
 ### ソースファイルの登録
     Renesas Coverageタブを選択し、Source Coverageタブ内で右クリックを押す。
     Add Fileより、任意のファイルを選択する。
 
 ### カバレッジの確認
-    デバッガをストップ又は一時停止した際に、カバレッジを表示が有効となる。
+    デバッガを一時停止した際に、カバレッジを表示が有効となる。
