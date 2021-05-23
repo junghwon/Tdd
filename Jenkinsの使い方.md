@@ -10,8 +10,16 @@
 
 
 ## 
-### 1. java run timeのインストール
-    https://java.com/ja/download/からJava Run Timeをインストールする。
+### 1. JDKのインストール
 
+### 2. eclipse.iniファイルの作成
+    \Renesas\e2_studio\eclipseディレクトリ内のe2studio.iniを複製する。
+    複製したファイルの名前をeclipse.iniに変える。
 
-eclipsec.exe -nosplash -debug -consolelog -apprication org.eclipse.cdt.managebuilder.core.headlessbuild -data C:\Users\junghwon\e2_studio\workspace -import [C:\Users\junghwon\git\e2studio_Unity_test] -build all
+### 3. ビルド実行
+    コマンドプロンプトから
+    \Renesas\e2_studio\eclipseディレクトリに移動し以下を実行する。
+    -dataにはワークスペースを指定し、-importにはプロジェクトを指定する。
+```shell
+eclipsec.exe -nosplash --launcher.suppressErrors -debug -consolelog -application org.eclipse.cdt.managedbuilder.core.headlessbuild -data "C:\Users\junghwon\e2_studio\workspace" -import "C:\Users\junghwon\e2_studio\workspace\headlessTest" -build all
+```
