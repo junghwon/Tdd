@@ -39,7 +39,7 @@ eclipsec.exe -nosplash --launcher.suppressErrors -debug -consolelog -application
 * Contam Setup : そのままでOK<br>
 <br>
 
-## Jenkinsのセットアップ
+## Jenkinsの初期セットアップ
 ### 1. 初期パスワードの確認
     インストールが完了するとJenkinsがブラウザで立ち上がる。
     下記のように、初期パスワードが記載されているディレクトリパスが表示されるので、そこに初期パスワードを見に行く。
@@ -51,3 +51,30 @@ eclipsec.exe -nosplash --launcher.suppressErrors -debug -consolelog -application
 
 ### 3. プラグインのインストール
     "Install suggester plugins"を選択すると、プラグインのインストールが始まる。
+
+### 4. ユーザー名とパスワードの設定
+    ユーザー名とパスワード等を設定する。
+
+### 5. URLの設定
+    今回は下記の通り設定する。
+    http://localhost/jenkins:8080/
+<br>
+
+## ジョブの作成
+### 1. ジョブの作成
+    Enter an item nameの欄に新規にジョブ名をつけ、フリースタイル・プロジェクトのビルドを選択する。
+
+### 2. ビルド設定
+    ビルドタブを選択し、ビルド手順の追加から"windowsバッチコマンドの実行"を選択する。
+    コマンドの欄に以下を記載する。
+    保存を押して設定を保存する。
+```c
+C:\Renesas\e2_studio\eclipse\eclipsec.exe -nosplash --launcher.suppressErrors -debug -consolelog -application org.eclipse.cdt.managedbuilder.core.headlessbuild -data "C:\Users\junghwon\e2_studio\workspace" -import "C:\Users\junghwon\e2_studio\workspace\headlessTest" -build all
+```
+
+### 3. ビルドの実行
+    ジョブページに入って、"ビルド実行"を押す。
+<br>
+
+
+    
