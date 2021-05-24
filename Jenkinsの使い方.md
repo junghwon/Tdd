@@ -58,6 +58,7 @@ eclipsec.exe -nosplash --launcher.suppressErrors -debug -consolelog -application
 ### 5. URLの設定
     今回は下記の通り設定する。
     http://localhost/jenkins:8080/
+    
 <br>
 
 ## ジョブの作成
@@ -75,6 +76,17 @@ C:\Renesas\e2_studio\eclipse\eclipsec.exe -nosplash --launcher.suppressErrors -d
 ### 3. ビルドの実行
     ジョブページに入って、"ビルド実行"を押す。
 <br>
+
+## リモートからジョブの実行
+### 1. 基本
+    基本的には以下の感じで実行できる。
+```shell
+curl http://[jenkins-server]:8080/job/[job_name]/build
+```
+<br>
+
+## Git連携
+
 
 
     
